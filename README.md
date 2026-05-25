@@ -40,6 +40,17 @@ open /Applications/term-mac.app
 - **Blink cursor cu durata custom**: SwiftTerm hardcodeaza 0.7s in `MacCaretView.updateAnimation`. `caretView` e internal — accesat prin `Mirror(reflecting:)`, suprascris cu CABasicAnimation propriu. Re-aplicat la `NSWindow.didBecomeKeyNotification` fiindca SwiftTerm reseteaza animatia in `becomeFirstResponder`.
 - **Title tab fara loop**: `TerminalCoordinator` separat ca `processDelegate` (nu PuttyTerminalView ca propriul delegate — MacLocalTerminalView forwards `hostCurrentDirectoryUpdate`/`processTerminated` la `processDelegate` cu aceeasi semnatura = recursie).
 
+## Release
+
+Build self-contained `.dmg`:
+
+```bash
+./build/package.sh v0.1.0-alpha
+# → .dist/term-mac-v0.1.0-alpha.dmg
+gh release create v0.1.0-alpha .dist/term-mac-v0.1.0-alpha.dmg \
+    --title "v0.1.0-alpha — Initial release" --notes-file CHANGELOG.md
+```
+
 ## Licenta
 
-MIT. Vezi [LICENSE](LICENSE).
+**GPL-2.0-or-later**. Vezi [LICENSE](LICENSE) si [NOTICE](NOTICE) pentru atribuiri terte.

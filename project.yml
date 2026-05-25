@@ -31,7 +31,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ro.local.term-mac
         PRODUCT_NAME: term-mac
-        MARKETING_VERSION: "0.1"
+        MARKETING_VERSION: "0.1.0"
         CURRENT_PROJECT_VERSION: "1"
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGNING_ALLOWED: YES
