@@ -1,0 +1,34 @@
+# Build artefacts
+.build-xcode/
+.build/
+.build-release/
+DerivedData/
+build/
+*.app
+*.dmg
+*.xcarchive
+*.dSYM
+
+# Xcode user state
+xcuserdata/
+*.xcuserstate
+*.xcworkspace
+project.xcworkspace/
+!default.xcworkspace
+
+# macOS
+.DS_Store
+._*
+
+# Swift Package Manager
+Package.resolved
+.swiftpm/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Iconsets sursa (regenerate la build)
+AppIcon.iconset/
