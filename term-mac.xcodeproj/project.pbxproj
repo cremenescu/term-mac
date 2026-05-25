@@ -15,11 +15,13 @@
 		BD87A8E761A0E106AEB127D7 /* TermModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFF5BC3B67A394DDCE3A57 /* TermModel.swift */; };
 		C5E6B41844D6524DC624B69F /* ShellIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E45DA1ABC5B3ADFCA8ADC /* ShellIntegration.swift */; };
 		D13C101F26A039F30943FACD /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B16A09C6359758345D1AC2BD /* AppIcon.icns */; };
+		F5D400360D0585E0C936F629 /* AboutHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D01BBD05BDACEE99CAE89C /* AboutHelp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		038E45DA1ABC5B3ADFCA8ADC /* ShellIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellIntegration.swift; sourceTree = "<group>"; };
 		2600EB8722AFD27B442324AD /* term-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "term-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38D01BBD05BDACEE99CAE89C /* AboutHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutHelp.swift; sourceTree = "<group>"; };
 		3ADE7E073309A68F80E80632 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		554A92FE6DC1966B7C8647D7 /* LocalTerminal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTerminal.swift; sourceTree = "<group>"; };
 		5641B660B6FA2C702A7AA3B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		99628DD4A889D9D449009AE9 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				38D01BBD05BDACEE99CAE89C /* AboutHelp.swift */,
 				3ADE7E073309A68F80E80632 /* ContentView.swift */,
 				5641B660B6FA2C702A7AA3B1 /* Info.plist */,
 				554A92FE6DC1966B7C8647D7 /* LocalTerminal.swift */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5D400360D0585E0C936F629 /* AboutHelp.swift in Sources */,
 				42A0224C379AED32DF00DB47 /* ContentView.swift in Sources */,
 				117DA433B127C7EB7E034033 /* LocalTerminal.swift in Sources */,
 				C5E6B41844D6524DC624B69F /* ShellIntegration.swift in Sources */,
@@ -171,14 +175,14 @@
 				CODE_SIGNING_ALLOWED = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "ro.local.term-mac";
 				PRODUCT_NAME = "term-mac";
 				SDKROOT = macosx;
@@ -193,14 +197,14 @@
 				CODE_SIGNING_ALLOWED = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "ro.local.term-mac";
 				PRODUCT_NAME = "term-mac";
 				SDKROOT = macosx;

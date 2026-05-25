@@ -20,6 +20,9 @@ struct TermApp: App {
                 .frame(minWidth: 620, minHeight: 400)
         }
         .commands {
+            CommandGroup(replacing: .appInfo) {
+                Button("Despre term-mac") { AboutPanel.show() }
+            }
             CommandGroup(after: .newItem) {
                 Button("Tab nou") { model.newTab() }
                     .keyboardShortcut("t")
@@ -31,6 +34,26 @@ struct TermApp: App {
                     .keyboardShortcut("=", modifiers: .command)
                 Button("Micsoreaza textul") { model.zoom(-1) }
                     .keyboardShortcut("-", modifiers: .command)
+            }
+            CommandGroup(replacing: .help) {
+                Button("Ajutor term-mac") { HelpWindow.show() }
+                    .keyboardShortcut("?", modifiers: .command)
+                Divider()
+                Button("Vezi pe GitHub") {
+                    if let u = URL(string: "https://github.com/cremenescu/term-mac") {
+                        NSWorkspace.shared.open(u)
+                    }
+                }
+                Button("Raporteaza o problema") {
+                    if let u = URL(string: "https://github.com/cremenescu/term-mac/issues/new") {
+                        NSWorkspace.shared.open(u)
+                    }
+                }
+                Button("Email autor") {
+                    if let u = URL(string: "mailto:razvan@cremenescu.ro") {
+                        NSWorkspace.shared.open(u)
+                    }
+                }
             }
         }
 
