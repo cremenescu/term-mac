@@ -212,11 +212,11 @@ struct LocalTerminal: NSViewRepresentable {
         let term = PuttyTerminalView(frame: NSRect(x: 0, y: 0, width: 800, height: 480))
         term.font = NSFont.monospacedSystemFont(ofSize: CGFloat(fontSize), weight: .regular)
         TerminalThemes.apply(theme, to: term)
-        // Scrollback: SwiftTerm default = 500 linii. Marim la valoarea din Settings
-        // si re-rulam setup(isReset:false) care recreeaza Buffer-ul cu noua dimensiune.
-        // Trebuie facut INAINTE de startProcess (altfel pierdem output-ul shell-ului).
-        term.terminal.options.scrollback = max(500, scrollbackLines)
-        term.terminal.setup(isReset: false)
+        // Scrollback: SwiftTerm default = 500 linii. `changeScrollback(_:)` e API-ul
+        // public oficial — schimba Buffer.scrollback + lines.maxLength + refresh,
+        // fara sa pierda contentul. (`resetNormalBuffer()` recreeaza Buffer dar are
+        // side-effects pe care setupOptions ulterior le sterge — bug v0.1.3.)
+        term.terminal.changeScrollback(max(500, scrollbackLines))
         context.coordinator.onTitleChange = onTitleChange
         term.processDelegate = context.coordinator
         let shell = ProcessInfo.processInfo.environment["SHELL"] ?? "/bin/zsh"
@@ -243,6 +243,12 @@ struct LocalTerminal: NSViewRepresentable {
         TerminalThemes.apply(theme, to: nsView)
         context.coordinator.onTitleChange = onTitleChange
         nsView.applyCursorBlinkSpeed(cursorBlinkSpeed)
+        // Re-aplica scrollback daca user-ul l-a schimbat in Settings (changeScrollback
+        // pastreaza contentul existent, doar reajusteaza marimea lines.maxLength).
+        let want = max(500, scrollbackLines)
+        if nsView.terminal.options.scrollback != want {
+            nsView.terminal.changeScrollback(want)
+        }
         guard isActive else { return }
         DispatchQueue.main.async {
             if let w = nsView.window, w.firstResponder !== nsView { w.makeFirstResponder(nsView) }
