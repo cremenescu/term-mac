@@ -203,6 +203,7 @@ struct LocalTerminal: NSViewRepresentable {
     let theme: String
     let startupDir: String
     let cursorBlinkSpeed: CursorBlinkSpeed
+    let scrollbackLines: Int
     let onTitleChange: (String) -> Void
 
     func makeCoordinator() -> TerminalCoordinator { TerminalCoordinator() }
@@ -211,6 +212,11 @@ struct LocalTerminal: NSViewRepresentable {
         let term = PuttyTerminalView(frame: NSRect(x: 0, y: 0, width: 800, height: 480))
         term.font = NSFont.monospacedSystemFont(ofSize: CGFloat(fontSize), weight: .regular)
         TerminalThemes.apply(theme, to: term)
+        // Scrollback: SwiftTerm default = 500 linii. Marim la valoarea din Settings
+        // si re-rulam setup(isReset:false) care recreeaza Buffer-ul cu noua dimensiune.
+        // Trebuie facut INAINTE de startProcess (altfel pierdem output-ul shell-ului).
+        term.terminal.options.scrollback = max(500, scrollbackLines)
+        term.terminal.setup(isReset: false)
         context.coordinator.onTitleChange = onTitleChange
         term.processDelegate = context.coordinator
         let shell = ProcessInfo.processInfo.environment["SHELL"] ?? "/bin/zsh"

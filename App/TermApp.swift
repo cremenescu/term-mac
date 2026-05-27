@@ -80,6 +80,16 @@ struct TermSettings: View {
                         Text(s.label).tag(s)
                     }
                 }
+                Picker("Buffer scrollback", selection: $model.scrollbackLines) {
+                    Text("1.000 linii").tag(1000)
+                    Text("5.000 linii").tag(5000)
+                    Text("10.000 linii").tag(10000)
+                    Text("25.000 linii").tag(25000)
+                    Text("50.000 linii").tag(50000)
+                    Text("100.000 linii").tag(100000)
+                }
+                Text("Se aplica la urmatorul tab deschis. Mai mult = mai multa RAM.")
+                    .font(.caption).foregroundStyle(.secondary)
             }
             Section("Shell integration") {
                 VStack(alignment: .leading, spacing: 6) {

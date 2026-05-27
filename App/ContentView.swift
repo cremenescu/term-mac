@@ -17,6 +17,7 @@ struct ContentView: View {
                                   theme: model.theme,
                                   startupDir: model.resolvedStartupDir(),
                                   cursorBlinkSpeed: model.cursorBlinkSpeed,
+                                  scrollbackLines: model.scrollbackLines,
                                   onTitleChange: { newTitle in
                                       model.setTitle(newTitle, for: id)
                                   })

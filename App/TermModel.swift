@@ -41,6 +41,11 @@ final class TermModel: ObservableObject {
     @Published var cursorBlinkSpeed: CursorBlinkSpeed = .medium {
         didSet { UserDefaults.standard.set(cursorBlinkSpeed.rawValue, forKey: "term.cursorBlinkSpeed") }
     }
+    /// Numar de linii de istoric pe care le tine fiecare tab. Default SwiftTerm = 500
+    /// (prea mic pentru "do you wish to see all 1217 possibilities" la tab completion).
+    @Published var scrollbackLines: Int = 10000 {
+        didSet { UserDefaults.standard.set(scrollbackLines, forKey: "term.scrollbackLines") }
+    }
     /// Daca true, app-ul mentine in `~/.zshrc` un bloc auto-instalat cu title hook
     /// + tab cycling. Sincronizat cu fisierul real (toggle-ul instaleaza/dezinstaleaza).
     @Published var shellIntegrationEnabled: Bool = true {
@@ -62,6 +67,7 @@ final class TermModel: ObservableObject {
         if let v = UserDefaults.standard.string(forKey: "term.startupDir") { startupDir = v }
         if let v = UserDefaults.standard.string(forKey: "term.cursorBlinkSpeed"),
            let s = CursorBlinkSpeed(rawValue: v) { cursorBlinkSpeed = s }
+        if let v = UserDefaults.standard.object(forKey: "term.scrollbackLines") as? Int { scrollbackLines = v }
         // Default ON pentru shell integration (chiar daca cheia nu exista inca).
         if let v = UserDefaults.standard.object(forKey: "term.shellIntegrationEnabled") as? Bool {
             shellIntegrationEnabled = v
